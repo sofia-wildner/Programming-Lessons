@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrossel JS - Portal de Notícias</title>
+    <style>
+        /* --- RESET BÁSICO --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e24;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* --- CONTAINER PRINCIPAL --- */
+        .carrossel {
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            background-color: #000;
+        }
+
+        /* --- CONTAINER DOS SLIDES --- */
+        .slides {
+            display: flex;
+            /* A largura agora é 100% do container pai, e os filhos não quebram linha */
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Estrutura de cada slide */
+        .slide {
+            min-width: 100%; /* Cada slide ocupa 100% da área visível do carrossel */
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- OVERLAY DE NOTÍCIA --- */
+        .noticia-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 80px 40px 30px 40px;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, transparent 100%);
+            color: #fff;
+            pointer-events: none;
+        }
+
+        .noticia-overlay h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            line-height: 1.2;
+        }
+
+        .noticia-overlay p {
+            font-size: 1.1rem;
+            color: #d1d5db;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        /* --- CONTROLES (SETAS) --- */
+        .controles {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Transformamos as labels em botões reais */
+        .seta {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            color: white;
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: auto;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .seta:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #111;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="carrossel">
+        <!-- Apenas o conteúdo, sem inputs invisíveis -->
+        <div class="slides" id="trilha">
+            
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Notícia 1">
+                <div class="noticia-overlay">
+                    <h2>Nova Tecnologia de IA Redefine o Mercado</h2>
+                    <p>Especialistas apontam mudanças estruturais na forma como desenvolvemos software.</p>
+                </div>
+            </div>
+            
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Notícia 2">
+                <div class="noticia-overlay">
+                    <h2>Mercado de Trabalho Globalizado</h2>
+                    <p>Oportunidades remotas continuam crescendo com alta demanda por arquiteturas modernas.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Notícia 3">
+                <div class="noticia-overlay">
+                    <h2>Segurança Cibernética em Foco</h2>
+                    <p>Novos protocolos de criptografia estão sendo testados em instituições acadêmicas.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Notícia 4">
+                <div class="noticia-overlay">
+                    <h2>Automação Residencial e IoT</h2>
+                    <p>Sistemas integrados gerenciando ambientes físicos via APIs de resposta rápida.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Notícia 5">
+                <div class="noticia-overlay">
+                    <h2>Plataformas Educacionais Interativas</h2>
+                    <p>O ensino técnico abraça novas metodologias com ferramentas orquestradas em nuvem.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Apenas dois botões universais agora -->
+        <div class="controles">
+            <button class="seta" id="btn-voltar">&#10094;</button>
+            <button class="seta" id="btn-avancar">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- O "Cérebro" do Carrossel -->
+    <script>
+        // 1. Mapeamento dos elementos do DOM
+        const trilha = document.getElementById('trilha');
+        const btnVoltar = document.getElementById('btn-voltar');
+        const btnAvancar = document.getElementById('btn-avancar');
+        const slides = document.querySelectorAll('.slide');
+        
+        // 2. Estado inicial
+        let indiceAtual = 0;
+        const totalSlides = slides.length;
+
+        // 3. Função central que move a trilha
+        function atualizarCarrossel() {
+            // Se o índice for 1, move -100%. Se for 2, move -200%...
+            const deslocamento = indiceAtual * -100;
+            trilha.style.transform = `translateX(${deslocamento}%)`;
+        }
+
+        // 4. Lógica para avançar
+        btnAvancar.addEventListener('click', () => {
+            if (indiceAtual === totalSlides - 1) {
+                // Se estiver no último, volta pro primeiro
+                indiceAtual = 0;
+            } else {
+                // Senão, apenas avança um
+                indiceAtual++;
+            }
+            atualizarCarrossel();
+        });
+
+        // 5. Lógica para voltar
+        btnVoltar.addEventListener('click', () => {
+            if (indiceAtual === 0) {
+                // Se estiver no primeiro, vai pro último
+                indiceAtual = totalSlides - 1;
+            } else {
+                // Senão, apenas volta um
+                indiceAtual--;
+            }
+            atualizarCarrossel();
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+📄 Briefing de Projeto: Restaurante "Tempero de Família Canoas"
+
+Nicho: Restaurante de Comida Afetiva e Caseira.1. Visão Geral do Cliente e o Problema
+O "Tempero de Família" é um restaurante tradicional localizado no centro de Canoas, conhecido por servir pratos com sabor de infância, como um clássico arroz com frango bem temperado, matambre recheado e assados aos finais de semana. O restaurante atende principalmente trabalhadores da região que buscam um almoço reconfortante e de qualidade.
+
+O problema atual é que eles dependem de uma placa de giz na calçada e de postagens irregulares nas redes sociais para divulgar o "Prato do Dia". Eles precisam de um site limpo, rápido e direto ao ponto, onde o cliente possa acessar pelo celular antes do meio-dia, conferir o cardápio diário, ver fotos apetitosas dos pratos e encontrar facilmente o botão para pedir marmita ou reservar uma mesa. O visual deve transmitir nostalgia, limpeza e tradição.
+
+2. Regras de Negócio e Escopo (Requisitos Obrigatórios)
+
+O projeto deve conter obrigatoriamente 5 páginas conectadas entre si:
+Home: A página principal deve focar no "Prato do Dia", com uma foto em destaque e botões de acesso rápido para o cardápio completo e contato.
+A Nossa Cozinha (Sobre Nós): Uma página contando a história do restaurante e a dedicação à comida afetiva e ingredientes frescos.
+Cardápio Digital: Listagem clara das opções de refeições diárias, bebidas e sobremesas caseiras.
+Galeria (Pratos e Ambiente): Imagens do salão do restaurante e dos pratos servidos, organizando o conteúdo visual para web de forma atrativa.
+Contato e Localização: Formulário para reservas de mesas, links para pedidos de tele-entrega e um mapa integrado mostrando como chegar.
+
+3. As Fases do Projeto (Roadmap da Agência)
+
+Fase 1: Fundações (Wireframe e Brainstorming)
+Objetivo: Estruturar a arquitetura da informação e pensar na jornada do usuário que tem pouco tempo no horário de almoço.
+Tarefa: Nos primeiros 120 minutos, a equipe fará o brainstorming para definir a hierarquia de leitura. Deverão esboçar o wireframe no papel ou quadro branco, focando em como apresentar o cardápio de forma limpa.
+Restrição: Proibido o uso de computadores ou celulares nesta etapa.
+
+Fase 2: Identidade e Prototipagem (Canva)
+Objetivo: Criar o leiaute para o website, estabelecendo a identidade visual (cores, formas, diagramação e tipografia) que remeta à comida caseira.
+Tarefa: Desenvolver o protótipo de alta fidelidade no Canva.
+Entregável: Apresentação do protótipo (o pitch) para o PO (você) e demais alunos, defendendo as escolhas de design e a acessibilidade da interface.
+Validação: O grupo só avançará para a codificação após a aprovação formal do PO. Se o texto do cardápio estiver difícil de ler, o grupo precisará refazer o contraste ou a tipografia.
+
+Fase 3: Construção (Desenvolvimento HTML/CSS e Apresentação Final)
+Objetivo: Codificar a interface utilizando a estrutura semântica das linguagens de marcação de conteúdo e estilo para web.
+Tarefa: Desenvolver o site completo aplicando HTML e CSS. Como o público acessa muito via smartphone no intervalo do trabalho, a aplicação do design responsivo é o fator mais crítico desta fase.
+Entregável Final: Site funcional apresentado no navegador, evidenciando as transições entre as páginas e a adaptação do leiaute para telas menores.
+
+4. Critérios de Aceite (O que o PO vai avaliar rigorosamente)
+
+Fidelidade: A paleta de cores nostálgica e a organização aprovadas no Canva estão idênticas no código final?
+Usabilidade e Acessibilidade: O cardápio digital tem um contraste excelente para leitura rápida em ambientes abertos (sob a luz do sol)?
+Semântica: A listagem de pratos utilizou as tags corretas do HTML5, seguindo as boas práticas e padrões recomendados pelo W3C?
+Responsividade: A experiência de navegação pelo celular é fluida e os botões de ação estão fáceis de clicar com o polegar?

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevStart - Criação de Sites Modernos</title>
+  
+  <style>
+    /* =========================================
+       1. VARIÁVEIS E TEMA (DARK MODE)
+       ========================================= */
+    :root {
+      --cor-fundo: #ffffff;
+      --cor-texto: #333333;
+      --cor-primaria: #0ea5e9;
+      --cor-secundaria: #f1f5f9;
+      --cor-header: rgba(255, 255, 255, 0.95);
+      --borda: #e2e8f0;
+    }
+
+    body.dark-theme {
+      --cor-fundo: #0f172a;
+      --cor-texto: #f8fafc;
+      --cor-primaria: #38bdf8;
+      --cor-secundaria: #1e293b;
+      --cor-header: rgba(15, 23, 42, 0.95);
+      --borda: #334155;
+    }
+
+    /* =========================================
+       2. RESET E ESTILOS GERAIS
+       ========================================= */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--cor-fundo);
+      color: var(--cor-texto);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      line-height: 1.6;
+      overflow-x: hidden; 
+    }
+
+    section {
+      height: 100vh;
+      padding: 80px 5%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      scroll-snap-align: start; 
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: var(--cor-primaria);
+      text-align: center;
+    }
+
+    /* =========================================
+       3. NAVEGAÇÃO (HEADER)
+       ========================================= */
+    header {
+      position: fixed;
+      top: 0; width: 100%;
+      background-color: var(--cor-header);
+      padding: 15px 5%;
+      display: flex; justify-content: space-between; align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .logo { font-size: 1.5rem; font-weight: bold; color: var(--cor-primaria); text-decoration: none; }
+    nav { display: flex; gap: 20px; align-items: center; }
+    nav a { text-decoration: none; color: var(--cor-texto); font-weight: 500; }
+    nav a:hover { color: var(--cor-primaria); }
+    #btn-tema { background: none; border: 1px solid var(--cor-texto); color: var(--cor-texto); padding: 5px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+
+    /* =========================================
+       4. SEÇÃO 1: HERO COM VÍDEO NATIVO
+       ========================================= */
+    #inicio { position: relative; overflow: hidden; padding: 0; }
+    .video-background { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; pointer-events: none; }
+    .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 2; }
+    .hero-content { position: relative; z-index: 3; text-align: center; color: #ffffff; padding: 0 5%; }
+    .hero-content h1 { font-size: 3.5rem; margin-bottom: 20px; }
+
+    .typing-effect {
+      display: inline-block; overflow: hidden; white-space: nowrap;
+      border-right: 3px solid var(--cor-primaria);
+      animation: typing 3.5s steps(40, end), blink .75s step-end infinite;
+    }
+
+    @keyframes typing { from { width: 0 } to { width: 100% } }
+    @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--cor-primaria) } }
+
+    .cta-btn {
+      display: inline-block; margin-top: 30px; padding: 15px 30px;
+      background-color: var(--cor-primaria); color: #fff;
+      text-decoration: none; border-radius: 5px; font-size: 1.2rem;
+      font-weight: bold; transition: opacity 0.3s;
+    }
+    .cta-btn:hover { opacity: 0.8; }
+
+    /* =========================================
+       5. SEÇÃO 2: SOBRE
+       ========================================= */
+    #sobre p { max-width: 800px; text-align: center; font-size: 1.2rem; }
+    
+    /* =========================================
+       6. SEÇÃO 3: SERVIÇOS COM GRADIENTE ANIMADO
+       ========================================= */
+    #servicos { 
+      /* Mágica do Gradiente Animado */
+      background: linear-gradient(-45deg, #0ea5e9, #3b82f6, #8b5cf6, #14b8a6);
+      background-size: 400% 400%;
+      animation: gradienteAnimado 12s ease infinite;
+    }
+
+    #servicos h2 {
+      color: #ffffff; /* Mudamos o título para branco para dar leitura sobre o fundo colorido */
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    @keyframes gradienteAnimado {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .grid-servicos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; width: 100%; max-width: 1000px; }
+    
+    .card { 
+      background-color: var(--cor-fundo); 
+      padding: 30px; 
+      border-radius: 10px; 
+      text-align: center; 
+      /* Adicionada uma sombra para destacar os cartões do fundo super colorido */
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      border: 1px solid var(--borda); 
+      transition: transform 0.3s; 
+    }
+    .card:hover { transform: translateY(-10px); }
+    .card h3 { margin-bottom: 15px; color: var(--cor-primaria); }
+
+    /* =========================================
+       7. DEMAIS SEÇÕES (Parallax, FAQ, Contato)
+       ========================================= */
+    .parallax-divisor {
+      background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2000&auto=format&fit=crop');
+      background-attachment: fixed; background-position: center; background-size: cover;
+    }
+    .parallax-divisor h2 { color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); font-size: 4rem; margin: 0; }
+
+    #faq { width: 100%; }
+    .faq-container { width: 100%; max-width: 800px; }
+    details { background-color: var(--cor-secundaria); margin-bottom: 15px; padding: 20px; border-radius: 8px; border: 1px solid var(--borda); cursor: pointer; }
+    summary { font-size: 1.2rem; font-weight: bold; }
+    details p { margin-top: 15px; color: var(--cor-texto); opacity: 0.9; }
+
+    #contato { background-color: var(--cor-secundaria); justify-content: space-between; padding-bottom: 0; }
+    .contato-container { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; }
+    form { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 500px; }
+    input, textarea { padding: 15px; border: 1px solid var(--borda); border-radius: 5px; background-color: var(--cor-fundo); color: var(--cor-texto); font-family: inherit; }
+    button[type="submit"] { padding: 15px; background-color: var(--cor-primaria); color: white; border: none; border-radius: 5px; font-size: 1.1rem; cursor: pointer; font-weight: bold; }
+    footer { text-align: center; padding: 20px; width: 100%; border-top: 1px solid var(--borda); }
+
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hero-content h1 { font-size: 2.5rem; }
+      .parallax-divisor h2 { font-size: 2.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Todo o HTML permanece idêntico, a mágica do gradiente animado aconteceu apenas no CSS da Seção 6! -->
+
+  <header>
+    <a href="#inicio" class="logo">DevStart.</a>
+    <nav>
+      <a href="#sobre">Sobre Mim</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <button id="btn-tema">🌙</button>
+  </header>
+
+  <section id="inicio">
+    <video autoplay muted loop playsinline class="video-background">
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Transforme sua ideia em <br> <span class="typing-effect">um site de alto impacto.</span></h1>
+      <p>Desenvolvimento web profissional, rápido e focado em resultados.</p>
+      <a href="#contato" class="cta-btn">Solicitar Orçamento</a>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <h2>Sobre o Desenvolvedor</h2>
+    <p>Sou um desenvolvedor especializado em criar interfaces modernas e responsivas. Meu foco é entregar não apenas um site, mas uma ferramenta de vendas e presença digital para sua empresa. Trabalho com HTML, CSS e JavaScript puro para garantir o máximo de performance.</p>
+  </section>
+
+  <section id="servicos">
+    <h2>O que eu faço</h2>
+    <div class="grid-servicos">
+      <div class="card">
+        <h3>Landing Pages</h3>
+        <p>Páginas únicas focadas em conversão. Ideais para lançamento de produtos ou captação de leads.</p>
+      </div>
+      <div class="card">
+        <h3>Sites Institucionais</h3>
+        <p>Apresente sua empresa ao mundo com um site profissional, páginas sobre a equipe, serviços e contato.</p>
+      </div>
+      <div class="card">
+        <h3>Design Responsivo</h3>
+        <p>Seu site perfeito em qualquer dispositivo, desde celulares e tablets até grandes monitores.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="parallax-divisor">
+    <h2>Tecnologia e Performance</h2>
+  </section>
+
+  <section id="faq">
+    <h2>Perguntas Frequentes</h2>
+    <div class="faq-container">
+      <details>
+        <summary>Quanto tempo demora para criar um site?</summary>
+        <p>Depende da complexidade. Uma Landing Page pode levar de 1 a 2 semanas, enquanto sites institucionais maiores podem levar até 4 semanas.</p>
+      </details>
+      <details>
+        <summary>Vocês trabalham com manutenção após a entrega?</summary>
+        <p>Sim! Oferecemos planos de manutenção mensal para garantir que seu site continue atualizado, seguro e rápido.</p>
+      </details>
+      <details>
+        <summary>O site vai aparecer no Google?</summary>
+        <p>Sim. Todos os nossos projetos são desenvolvidos seguindo as melhores práticas de SEO utilizando HTML semântico.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="contato-container">
+      <h2>Vamos conversar?</h2>
+      <form onsubmit="event.preventDefault(); alert('Formulário enviado!');">
+        <input type="text" placeholder="Seu Nome" required>
+        <input type="email" placeholder="Seu E-mail" required>
+        <textarea rows="4" placeholder="Fale um pouco sobre o seu projeto..." required></textarea>
+        <button type="submit">Enviar Mensagem</button>
+      </form>
+    </div>
+    <footer>
+      <p>&copy; 2026 DevStart. Exemplo de projeto acadêmico para Frontend.</p>
+    </footer>
+  </section>
+
+  <script>
+    const btnTema = document.getElementById('btn-tema');
+    btnTema.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+      if (document.body.classList.contains('dark-theme')) {
+        btnTema.textContent = '☀️';
+      } else {
+        btnTema.textContent = '🌙';
+      }
+    });
+  </script>
+
+</body>
+</html>

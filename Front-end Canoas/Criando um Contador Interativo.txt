@@ -1,0 +1,41 @@
+🚀 Guia de Desafio: Criando um Contador Interativo
+
+Neste exercício, você vai construir uma aplicação web funcional: um Contador Interativo. O objetivo é aplicar a divisão clássica do desenvolvimento web:
+HTML: Estrutura da página.
+CSS: Estilização e layout flexível.
+JavaScript: Lógica de funcionamento e interatividade.
+Siga os passos em ordem. Não tente avançar para a próxima etapa sem concluir a anterior.
+📍 Etapa 1: Estruturação com HTML (O Esqueleto)
+Antes de deixar a tela bonita ou funcional, você precisa criar os elementos necessários na página.O que você precisa construir:Uma estrutura básica de documento HTML5.Um container principal (uma caixa/cartão) que vai agrupar todo o conteúdo.Um título para a sua aplicação.Uma área destinada a exibir o número do contador (ele deve iniciar exibindo 0).Um grupo de três botões com os textos: Diminuir, Zerar e Aumentar.🔎 O que você deve pesquisar para esta etapa:
+"Como criar a estrutura básica de um arquivo HTML5"
+"Para que serve a tag <main> e a tag <div> no HTML?"
+"Como criar títulos no HTML (<h1> até <h6>)"
+"Como criar botões no HTML usando a tag <button>"
+"O que é o atributo id e o atributo class no HTML e para que servem?"
+Dica da etapa: Atribua um id exclusivo para o elemento que exibe o número e classes para os botões. Isso vai facilitar muito na hora de aplicar o CSS e o JavaScript!
+📍 Etapa 2: Estilização com CSS e Flexbox ( O Visual)
+Agora que os elementos estão na tela, é hora de organizá-los e deixá-los visualmente atraentes. O desafio aqui é usar Flexbox para todo o alinhamento.O que você precisa fazer:Centralizar o cartão do contador exatamente no meio da tela (tanto na horizontal quanto na vertical).Organizar os elementos internos do cartão em uma coluna vertical bem espaçada (Título -> Número -> Botões).Colocar a caixa do número em destaque (com fonte grande e um fundo diferenciado).Alinhar os três botões lado a lado na horizontal, garantindo que eles tenham tamanhos proporcionais.Adicionar cores aos botões e efeitos visuais ao passar o mouse (hover) e ao clicar (active).🔎 O que você deve pesquisar para esta etapa:
+"Como resetar margens e paddings padrão no CSS usando o seletor universal *"
+"Como centralizar uma div no meio da tela com display: flex e min-height: 100vh"
+"O que faz a propriedade flex-direction: column?"
+"Como funciona a propriedade gap no Flexbox?"
+"Como alinhar itens lado a lado com Flexbox usando justify-content e align-items"
+"O que é e como usar a propriedade flex: 1 nos botões"
+"Como usar os pseudo-class :hover e :active no CSS"
+Dica da etapa: Evite usar margin para empurrar os botões ou centralizar coisas na marra. Deixe que o Flexbox faça todo o trabalho pesado de alinhamento e espaçamento.
+📍 Etapa 3: Lógica e Interatividade com JavaScript ( O Cérebro)
+Com a página pronta e estilizada, hora de dar vida ao contador. É nesta etapa que o número vai reagir aos cliques dos botões.O que você precisa fazer:Criar uma variável no JavaScript para guardar o valor atual do contador (iniciando em 0).Fazer o JavaScript "encontrar" e selecionar o elemento HTML onde o número é exibido.Criar uma função para Aumentar o valor da variável em +1 e atualizar o texto exibido na tela.Criar uma função para Diminuir o valor da variável em -1 e atualizar o texto exibido na tela.Criar uma função para Zerar o valor da variável (voltar para 0) e atualizar o texto na tela.Lógica condicional (Desafio de Cor):
+Se o número for maior que 0, mude a cor do texto para verde.
+Se o número for menor que 0, mude a cor do texto para vermelha.
+Se for igual a 0, mantenha a cor neutra/padrão.
+🔎 O que você deve pesquisar para esta etapa:
+"Como declarar variáveis no JavaScript usando let e const"
+"O que é o DOM (Document Object Model) no JavaScript?"
+"Como selecionar um elemento do HTML usando document.getElementById()"
+"Como alterar o texto de um elemento no JS usando textContent ou innerText"
+"Como criar funções no JavaScript"
+"Como associar um clique de botão HTML a uma função JS usando o atributo onclick"
+"Como usar estruturas condicionais if, else if e else no JS"
+"Como alterar o CSS de um elemento usando JavaScript via element.style.color"
+🏆 Desafios Extras (Para quem terminar rápido)
+Se o seu contador já está funcionando perfeitamente, tente implementar estas melhorias por conta própria:Limite de Alcance: Faça com que o contador não aceite valores menores que -10 nem maiores que 10. (Dica: pesquise sobre operadores lógicos no if).Novos Botões: Adicione botões para somar +5 e subtrair -5 de uma só vez.Animação Visual: Adicione uma transição suave de cor no CSS usando a propriedade transition no elemento do número.

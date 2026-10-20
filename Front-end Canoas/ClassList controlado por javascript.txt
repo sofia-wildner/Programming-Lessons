@@ -1,0 +1,53 @@
+ClassList controlado por javascript
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+<style>
+div {
+padding: 20px;
+}
+.box {
+padding: 20px;
+border: 2px solid black;
+font-size: 20px;
+}
+.box-alerta {
+background-color: rgb(228, 140, 140);
+border-color: red;
+font-size: 40px;
+}
+</style>
+</head>
+<body>
+<div class="box">Eu mudo com classes</div>
+<div>
+<button class="add-alerta">add alerta</button>
+<button class="remove-alerta">remove alerta</button>
+<button class="toggle-alerta">toogle alerta</button>
+</div>
+<script>
+const addAlerta = document.querySelector(".add-alerta");
+const removeAlerta = document.querySelector(".remove-alerta");
+const toggleAlerta = document.querySelector(".toggle-alerta");
+const box = document.querySelector(".box");
+
+addAlerta.addEventListener("click", function () {
+box.classList.add("box-alerta");
+});
+removeAlerta.addEventListener("click", function () {
+box.classList.remove("box-alerta");
+});
+toggleAlerta.addEventListener("click", function () {
+box.classList.toggle("box-alerta");
+});
+
+setInterval(function () {
+box.classList.toggle("box-alerta");
+}, 500);
+</script>
+</body>
+</html>

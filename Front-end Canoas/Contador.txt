@@ -1,0 +1,25 @@
+Contador
+
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+</head>
+<body>
+<button>Clique aqui</button>
+<div>0</div>
+<script>
+const botao = document.querySelector("button");
+const contador = document.querySelector("div");
+let valor = 0;
+
+botao.addEventListener("click", function () {
+valor = valor + 1;
+contador.textContent = valor;
+});
+</script>
+</body>
+</html>

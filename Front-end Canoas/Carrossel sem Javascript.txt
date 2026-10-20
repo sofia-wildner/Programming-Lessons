@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrossel CSS - Portal de Notícias</title>
+    <style>
+        /* --- RESET BÁSICO --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e24;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* --- CONTAINER PRINCIPAL --- */
+        .carrossel {
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            background-color: #000;
+        }
+
+        /* Oculta os botões de rádio que controlam o estado */
+        input[type="radio"] {
+            display: none;
+        }
+
+        /* --- CONTAINER DOS SLIDES --- */
+        .slides {
+            display: flex;
+            width: 500%; /* 100% para cada uma das 5 imagens */
+            /* A animação acontece aqui: */
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Estrutura de cada slide */
+        .slide {
+            width: 20%; /* Ocupa exatamente 1/5 do container (100% da tela visível) */
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- OVERLAY DE NOTÍCIA --- */
+        .noticia-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 80px 40px 30px 40px;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, transparent 100%);
+            color: #fff;
+            pointer-events: none;
+        }
+
+        .noticia-overlay h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            line-height: 1.2;
+        }
+
+        .noticia-overlay p {
+            font-size: 1.1rem;
+            color: #d1d5db;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        /* --- CONTROLES (SETAS) --- */
+        .controles {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            padding: 0 20px;
+            pointer-events: none; /* Permite que o clique passe para as setas */
+            z-index: 10;
+        }
+
+        .controles-grupo {
+            display: none; /* Esconde todos os grupos por padrão */
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        /* Estilização das setas de navegação (Labels) */
+        .seta {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            color: white;
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: auto; /* Reativa o clique na seta */
+            transition: all 0.3s ease;
+            user-select: none;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .seta:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #111;
+            transform: scale(1.1);
+        }
+
+        /* --- A LÓGICA DO CARROSSEL (O "PULO DO GATO") --- */
+        /* Movimenta a trilha de slides de acordo com o rádio selecionado */
+        #slide1:checked ~ .slides { transform: translateX(0%); }
+        #slide2:checked ~ .slides { transform: translateX(-20%); }
+        #slide3:checked ~ .slides { transform: translateX(-40%); }
+        #slide4:checked ~ .slides { transform: translateX(-60%); }
+        #slide5:checked ~ .slides { transform: translateX(-80%); }
+
+        /* Mostra apenas o grupo de setas correspondente ao slide atual */
+        #slide1:checked ~ .controles .grupo1 { display: flex; }
+        #slide2:checked ~ .controles .grupo2 { display: flex; }
+        #slide3:checked ~ .controles .grupo3 { display: flex; }
+        #slide4:checked ~ .controles .grupo4 { display: flex; }
+        #slide5:checked ~ .controles .grupo5 { display: flex; }
+
+    </style>
+</head>
+<body>
+
+    <div class="carrossel">
+        <!-- 1. Inputs de Rádio Ocultos -->
+        <input type="radio" name="carrossel-radio" id="slide1" checked>
+        <input type="radio" name="carrossel-radio" id="slide2">
+        <input type="radio" name="carrossel-radio" id="slide3">
+        <input type="radio" name="carrossel-radio" id="slide4">
+        <input type="radio" name="carrossel-radio" id="slide5">
+
+        <!-- 2. Slides de Conteúdo -->
+        <div class="slides">
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Notícia 1">
+                <div class="noticia-overlay">
+                    <h2>Nova Tecnologia de IA Redefine o Mercado</h2>
+                    <p>Especialistas apontam mudanças estruturais na forma como desenvolvemos software e arquitetamos sistemas complexos.</p>
+                </div>
+            </div>
+            
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Notícia 2">
+                <div class="noticia-overlay">
+                    <h2>Mercado de Trabalho Globalizado</h2>
+                    <p>Oportunidades remotas continuam crescendo para desenvolvedores Fullstack em 2026, com alta demanda por arquiteturas modernas.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Notícia 3">
+                <div class="noticia-overlay">
+                    <h2>Segurança Cibernética em Foco</h2>
+                    <p>Novos protocolos de criptografia estão sendo testados em instituições acadêmicas para proteger dados na era pós-quântica.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Notícia 4">
+                <div class="noticia-overlay">
+                    <h2>Automação Residencial e IoT</h2>
+                    <p>Sistemas integrados gerenciando ambientes físicos via APIs de resposta rápida viram tendência entre startups inovadoras.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Notícia 5">
+                <div class="noticia-overlay">
+                    <h2>Plataformas Educacionais Interativas</h2>
+                    <p>O ensino técnico abraça novas metodologias com apresentações interativas e ferramentas orquestradas em nuvem.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Controles de Navegação (Rótulos apontando para os IDs dos rádios) -->
+        <div class="controles">
+            <!-- As setas são labels. O 'for' indica qual rádio será acionado no clique -->
+            
+            <div class="controles-grupo grupo1">
+                <label for="slide5" class="seta">&#10094;</label> <!-- Seta esquerda: volta pro 5 -->
+                <label for="slide2" class="seta">&#10095;</label> <!-- Seta direita: avança pro 2 -->
+            </div>
+            
+            <div class="controles-grupo grupo2">
+                <label for="slide1" class="seta">&#10094;</label> 
+                <label for="slide3" class="seta">&#10095;</label> 
+            </div>
+            
+            <div class="controles-grupo grupo3">
+                <label for="slide2" class="seta">&#10094;</label> 
+                <label for="slide4" class="seta">&#10095;</label> 
+            </div>
+            
+            <div class="controles-grupo grupo4">
+                <label for="slide3" class="seta">&#10094;</label> 
+                <label for="slide5" class="seta">&#10095;</label> 
+            </div>
+            
+            <div class="controles-grupo grupo5">
+                <label for="slide4" class="seta">&#10094;</label> 
+                <label for="slide1" class="seta">&#10095;</label> <!-- Seta direita: volta pro início -->
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

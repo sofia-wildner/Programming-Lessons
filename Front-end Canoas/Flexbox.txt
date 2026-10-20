@@ -1,0 +1,5 @@
+Tutorial de ajuda:
+https://developer.mozilla.org/pt-BR/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts
+
+Realizar as atividades em:
+https://blog.codedimension.com.br/post/dominando-flexbox/

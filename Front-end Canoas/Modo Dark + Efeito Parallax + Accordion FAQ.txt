@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechCorp - Soluções Inovadoras</title>
+  
+  <style>
+    /* 1. MÁGICA DO DARK MODE: Variáveis CSS */
+    :root {
+      --cor-fundo: #ffffff;
+      --cor-texto: #333333;
+      --cor-primaria: #2563eb;
+      --cor-fundo-faq: #f3f4f6;
+    }
+
+    body.dark-theme {
+      --cor-fundo: #111827;
+      --cor-texto: #f9fafb;
+      --cor-primaria: #3b82f6;
+      --cor-fundo-faq: #1f2937;
+    }
+
+    /* Estilos Gerais */
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: var(--cor-fundo);
+      color: var(--cor-texto);
+      /* Transição suave ao trocar de tema */
+      transition: background-color 0.3s ease, color 0.3s ease; 
+    }
+
+    header {
+      padding: 20px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    button {
+      cursor: pointer;
+      padding: 10px 20px;
+      background-color: var(--cor-primaria);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    /* 2. MÁGICA DO PARALLAX: background-attachment fixed */
+    .sessao-parallax {
+      /* Imagem de exemplo do Unsplash */
+      background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000&auto=format&fit=crop');
+      height: 60vh; 
+      
+      /* O segredo do efeito Parallax está nestas 3 linhas: */
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .sessao-parallax h2 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    /* 3. MÁGICA DO FAQ: Estilizando as tags nativas */
+    .sessao-faq {
+      padding: 60px 5%;
+      max-width: 800px;
+      margin: 0 auto;
+      min-height: 50vh; /* Para permitir espaço de rolagem e ver o parallax */
+    }
+
+    details {
+      background-color: var(--cor-fundo-faq);
+      margin-bottom: 15px;
+      padding: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    summary {
+      font-weight: bold;
+      font-size: 1.1rem;
+      /* Remove a setinha padrão no Safari/Chrome para customização avançada, mas deixamos simples aqui */
+    }
+
+    details p {
+      margin-top: 15px;
+      line-height: 1.5;
+      color: var(--cor-texto);
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>TechCorp.</h1>
+    <button id="btn-tema">Modo Escuro 🌙</button>
+  </header>
+
+  <!-- Sessão com Parallax -->
+  <section class="sessao-parallax">
+    <h2>Construindo o Futuro</h2>
+  </section>
+
+  <!-- Sessão de FAQ sem JS -->
+  <section class="sessao-faq">
+    <h2>Dúvidas Frequentes</h2>
+    
+    <details>
+      <summary>Vocês atendem empresas de qual tamanho?</summary>
+      <p>Atendemos desde startups e microempresas até grandes corporações. Nossas soluções são escaláveis e se adaptam à sua necessidade atual.</p>
+    </details>
+
+    <details>
+      <summary>Como o Modo Escuro funciona neste site?</summary>
+      <p>O Modo Escuro foi construído usando CSS Variables (Variáveis CSS). O JavaScript apenas adiciona a classe "dark-theme" na tag body, e o CSS cuida do resto!</p>
+    </details>
+
+    <details>
+      <summary>Precisa de JavaScript para criar este menu de perguntas?</summary>
+      <p>Não! Este acordeão foi construído inteiramente com HTML5 semântico, utilizando as tags nativas <code>&lt;details&gt;</code> e <code>&lt;summary&gt;</code>.</p>
+    </details>
+  </section>
+
+  <script>
+    // Único trecho de JavaScript de toda a aplicação!
+    const botaoTema = document.getElementById('btn-tema');
+    
+    botaoTema.addEventListener('click', () => {
+      // O toggle adiciona a classe se ela não existir, e remove se existir
+      document.body.classList.toggle('dark-theme');
+      
+      // Muda o texto e o ícone do botão dependendo do tema atual
+      if (document.body.classList.contains('dark-theme')) {
+        botaoTema.textContent = 'Modo Claro ☀️';
+      } else {
+        botaoTema.textContent = 'Modo Escuro 🌙';
+      }
+    });
+  </script>
+
+</body>
+</html>
